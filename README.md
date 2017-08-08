@@ -5,8 +5,7 @@ A store with command line interface store w/ a connected SQL Database
 
 ## Table of Contents
 
-    [Documentation](#documentation)
-
+  1. [Documentation](#documentation)
     1. [Installation](#installation)
     2. [Run](#run)
     3. [Examples](#examples)
