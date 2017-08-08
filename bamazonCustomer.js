@@ -19,13 +19,13 @@ connection.connect(function(err) {
 connection.query('SELECT * FROM products', function(err, res) {
     if (err) throw err;
     console.table(res);
-    displayStore();
+    displayShop();
   });
 });
 
 //SQL pull products into an array
 var inventory = [];
-function displayStore(){
+function displayShop(){
 connection.query('SELECT product_name FROM products', function(err, res) {
     if (err) throw err;
     for (var i = 0; i < res.length; i++) {
@@ -84,7 +84,7 @@ var query = connection.query(
       }
     ],
     function(err, res) {
-      console.log(res.affectedRows + " product updated!\n");
+      console.log(product + " inventory updated!\n");
     }
   );
 }
@@ -93,6 +93,7 @@ var query = connection.query(
 function totalCost(product, unitsBought) {
 	connection.query('SELECT price FROM products WHERE ?', { product_name: product}, function(err, res) {
     		var cost = unitsBought * res[0].price;
-    		console.log('Thank you for selling your soul and shopping big business. Your total cost is: $' + cost);
+    		console.log('Thank you for selling your soul and shopping big business. Your total cost is: $' + cost.toFixed(2) +'\n');
+    		displayShop();
     	});
 }
